@@ -144,7 +144,7 @@ pacman_packages+=( nodejs npm rustup optipng )
 pacman_packages+=( alsa-utils pulseaudio )
 
 # Install useful apps
-pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent weechat scrot feh )
+pacman_packages+=( keepass mpv vlc smplayer kdenlive gimp inkscape firefox chromium scribus rtorrent weechat scrot feh )
 pacman_packages+=( libreoffice-fresh thunar lxappearance redshift unrar )
 
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
@@ -171,21 +171,32 @@ echo "
 "
 # Generate locales
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
-sed -i 's/^#fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen
+sed -i 's/^#fa_IR UTF-8/fa_IR UTF-8/' /etc/locale.gen
 locale-gen
 
 # Set timezone
-timedatectl --no-ask-password set-timezone Europe/Paris
+timedatectl --no-ask-password set-timezone Asia/Tehran
 
 # Set NTP clock
 timedatectl --no-ask-password set-ntp 1
 
 # Set locale
-localectl --no-ask-password set-locale LANG="en_US.UTF-8" LC_COLLATE="C" LC_TIME="fr_FR.UTF-8"
+localectl --no-ask-password set-locale LANG="en_US.UTF-8" LC_COLLATE="C" LC_TIME="fa_IR.UTF-8"
 
 # Set keymaps
 localectl --no-ask-password set-keymap us
-localectl --no-convert set-x11-keymap us,us pc104 ,intl grp:caps_toggle
+localectl --no-ask-password  --no-convert set-x11-keymap us,ir pc105 ,dvorak grp:alt_shift_toggle
+#localectl --no-convert set-x11-keymap us,us pc104 ,intl grp:caps_toggle
+#echo "Section "InputClass"
+#        Identifier "system-keyboard"
+#        MatchIsKeyboard "on"
+#        Option "XkbLayout" "us,ir"
+#        Option "XkbModel" "pc105"
+#        Option "XkbVariant" ",dvorak"
+#        Option "XkbOptions" "grp:alt_shift_toggle"
+#EndSection
+#" >> /etc/X11/xorg.conf.d/00-keyboard.conf
+
 
 # Hostname
 hostnamectl --no-ask-password set-hostname $hostname
@@ -215,7 +226,7 @@ if ! id -u $username; then
 fi
 
 # Add sudo no password rights
-sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+##sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
 echo "
 ###############################################################################
@@ -237,9 +248,9 @@ echo "
 ###############################################################################
 "
 # Remove no password sudo rights
-sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+##sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 # Add sudo rights
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+##sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 # Clean orphans pkg
 if [[ ! -n $(pacman -Qdt) ]]; then
