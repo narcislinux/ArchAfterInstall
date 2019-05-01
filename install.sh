@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # see http://redsymbol.net/articles/unofficial-bash-strict-mode/
 # To silent an error || true
 set -euo pipefail
@@ -108,7 +109,7 @@ pacman_packages=()
 pacman_packages+=( linux-headers )
 
 # Install X essentials
-pacman_packages+=( xorg-server xorg-apps xorg-xinit xorg-fonts-misc dbus xsel acpi xbindkeys )
+pacman_packages+=( xorg-server xorg-apps xorg-xinit xorg-fonts-misc dbus xsel acpi xbindkeys  i3status i3-gaps)
 
 # Install font essentials
 pacman_packages+=( cairo fontconfig freetype2 )
