@@ -1,7 +1,7 @@
 Arch After Install
 ===================
 
-My archlinux install script
+My Archlinux after install script
 
 ## Usage
 
