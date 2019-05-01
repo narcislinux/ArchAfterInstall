@@ -1,5 +1,10 @@
 #!/bin/bash
-
+##Fork: arch-install-script by  Camille TJHOA https://github.com/ctjhoa/arch-install-script.git
+##Author: Narges Ahmadi (NarcisLinux)  Email:n.sedigheh.ahmadi@gmail.com
+##Vertion 1
+##
+##This screen should add screen.
+##
 
 # see http://redsymbol.net/articles/unofficial-bash-strict-mode/
 # To silent an error || true
