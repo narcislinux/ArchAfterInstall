@@ -1,4 +1,4 @@
-arch-install-script
+Arch After Install
 ===================
 
 My archlinux install script
